@@ -28,7 +28,7 @@ module.exports = function(angular) {
 
 
     _inject: function() {
-      this._injectHtml(`<app id="${this._name}"></app>`);
+      this._injectHtml('<app id="' + this._name + '"></app>');
       this._injectCss(this._cssUrl);
     },
 
