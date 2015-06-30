@@ -7,9 +7,11 @@ module.exports = function(angular) {
   var App = function(angularApp, config) {
     this._name = config.name;
     this._cssUrl = config.cssUrl;
+    this._container = config.container;
     this._angularApp = angularApp;
     this._eventEmitter = new EventEmitter();
     this._api = null;
+    this._appElement = null;
 
     this._angularApp.on('started', function(api) {
       this._api = api;
@@ -28,13 +30,14 @@ module.exports = function(angular) {
 
 
     _inject: function() {
-      this._injectHtml('<app id="' + this._name + '"></app>');
-      this._injectCss(this._cssUrl);
+      this._createAppElement();
+      this._injectHtml();
+      this._injectCss();
     },
 
 
     _bootstrap: function() {
-      angular.bootstrap(document.getElementById(this._name), [this._name]);
+      angular.bootstrap(this._appElement, [this._name]);
     },
 
 
@@ -48,15 +51,20 @@ module.exports = function(angular) {
     },
 
 
-    _injectHtml: function(content) {
-      angular.element(document.body).append(content);
+    _createAppElement: function() {
+      this._appElement = angular.element('<app></app>');
     },
 
 
-    _injectCss: function(path) {
+    _injectHtml: function() {
+      angular.element(this._container || document.body).append(this._appElement);
+    },
+
+
+    _injectCss: function() {
       var head = document.getElementsByTagName('head')[0];
       var link = document.createElement('link');
-      link.setAttribute('href', path);
+      link.setAttribute('href', this._cssUrl);
       link.setAttribute('rel', 'stylesheet');
       link.setAttribute('type', 'text/css');
       head.appendChild(link);
