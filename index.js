@@ -1,6 +1,7 @@
 'use strict';
 
 var EventEmitter = require('events').EventEmitter;
+var deferredBootstrapper = require('angular-deferred-bootstrap');
 
 module.exports = function(angular) {
 
@@ -22,10 +23,10 @@ module.exports = function(angular) {
 
   App.prototype = {
 
-    runAngularApp: function() {
+    runAngularApp: function(resolveBeforeStart) {
       this._angularApp.registerModules();
       this._inject();
-      this._bootstrap();
+      this._bootstrap(resolveBeforeStart);
     },
 
 
@@ -36,8 +37,12 @@ module.exports = function(angular) {
     },
 
 
-    _bootstrap: function() {
-      angular.bootstrap(this._appElement, [this._name]);
+    _bootstrap: function(resolveBeforeStart) {
+      deferredBootstrapper.bootstrap({
+        element: this._appElement,
+        module: this._name,
+        resolve: resolveBeforeStart
+      });
     },
 
 

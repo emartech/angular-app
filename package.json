@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/emartech/angular-app/issues"
   },
-  "homepage": "https://github.com/emartech/angular-app#readme"
+  "homepage": "https://github.com/emartech/angular-app#readme",
+  "dependencies": {
+    "angular-deferred-bootstrap": "git://github.com/emartech/angular-deferred-bootstrap.git"
+  }
 }
