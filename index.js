@@ -38,7 +38,7 @@ module.exports = function(angular) {
 
 
     _bootstrap: function(resolveBeforeStart) {
-      deferredBootstrapper.bootstrap({
+      deferredBootstrapper(angular).bootstrap({
         element: this._appElement,
         module: this._name,
         resolve: resolveBeforeStart
