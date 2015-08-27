@@ -67,12 +67,11 @@ module.exports = function(angular) {
 
 
     _injectCss: function() {
-      var head = document.getElementsByTagName('head')[0];
       var link = document.createElement('link');
       link.setAttribute('href', this._cssUrl);
       link.setAttribute('rel', 'stylesheet');
       link.setAttribute('type', 'text/css');
-      head.appendChild(link);
+      document.body.appendChild(link);
     }
 
   };
