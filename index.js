@@ -14,9 +14,8 @@ module.exports = function(angular) {
     this._api = null;
     this._appElement = null;
 
-    this._angularApp.on('started', function(api) {
-      this._api = api;
-      this._eventEmitter.emit('initialized', api);
+    this._angularApp.on('started', function() {
+      this._eventEmitter.emit('initialized');
     }.bind(this));
   };
 
