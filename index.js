@@ -13,6 +13,7 @@ module.exports = function(angular) {
     this._eventEmitter = new EventEmitter();
     this._api = null;
     this._appElement = null;
+    this._appTemplate = config.appTemplate || '<app></app>';
 
     this._angularApp.on('started', function() {
       this._eventEmitter.emit('initialized');
@@ -56,7 +57,7 @@ module.exports = function(angular) {
 
 
     _createAppElement: function() {
-      this._appElement = angular.element('<app></app>');
+      this._appElement = angular.element(this._appTemplate);
     },
 
 
