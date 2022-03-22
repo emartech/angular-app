@@ -1,6 +1,6 @@
 {
   "name": "angular-app-initializer",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/emartech/angular-app#readme",
   "dependencies": {
-    "angular-deferred-bootstrap": "git://github.com/emartech/angular-deferred-bootstrap.git"
+    "angular-deferred-bootstrap": "https://github.com/emartech/angular-deferred-bootstrap.git"
   }
 }
